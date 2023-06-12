@@ -1,0 +1,129 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+main {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  background: white;
+  margin-bottom: 50px;
+}
+
+#input-form-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#company-form {
+  width: 100%;
+  display: flex;
+}
+
+#company-form input,
+#company-form textarea {
+  display: block;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+
+#company-form button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background-color: #333;
+  color: white;
+}
+
+#company-form button:hover {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#company-info {
+  padding: 30px;
+  border: 1px solid #ccc;
+  background-color: white;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+ .company-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: scroll;
+  }
+  
+  .company-info-table th,
+  .company-info-table td {
+    padding: 8px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  .company-info-table th {
+    font-weight: bold;
+  }
+  
+  .company-info-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .company-info-table {
+      overflow-x: scroll;
+    }
+  }
+  td,th{
+    border: 1px solid black;
+  }
+/* Denne CSS-filen har noen grunnleggende stiler, inkludert:
+En standard font og bakgrunnsfarge for hele nettsiden.
+Stiler for header og footer, inkludert bakgrunnsfarge og tekstfarge.
+Marg og padding for hovedinnholdet og skjemaet.
+Spesifikke stiler for input- og textarea-elementene i skjemaet, inkludert display, marg, padding og bredde.
+Stiler for knappene i skjemaet, inkludert padding, marg og en peker cursor når musen er over dem.
+Stiler for bedriftsinformasjonsdiven, inkludert padding, border og bakgrunnsfarge.

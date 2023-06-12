@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- Setter tegnsettet til UTF-8 for siden -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Gjør siden responsiv -->
+    <title>Company App</title> <!-- Setter tittelen på siden -->
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Linker til en ekstern CSS-fil -->
+</head>
+
+<body>
+    <header>
+        <h1>Stian's bedrift nettside</h1> <!-- Header med en overskrift -->
+    </header>
+    <h2 style="text-align: center;">List of Saved Companies</h2> <!-- En overskrift sentrert på siden -->
+    <div class="main-container">
+        <main style="max-width: 90%;">
+            <div id="company-info" style="overflow-x:scroll;"> <!-- Lager en beholder for selskapsinformasjon -->
+                <table id="companies" class="company-info-table"> <!-- Lager en tabell for selskapsinformasjon -->
+                    <thead>
+                        <tr> <!-- Definerer tabellens overskrift -->
+                            <!-- Liste av kolonneoverskrifter -->
+                            <th>Organisasjonsnummer</th>
+                            <th>Navn</th>
+                            <th>Organisasjonsform</th>
+                            <th>Adresse</th>
+                            <th>Industry Code</th>
+                            <th>Sector Code</th>
+                            <th>Org Type</th>
+                            <th>Org Path</th>
+                            <th>Org Status</th>
+                            <th>Issued</th>
+                            <th>Hjemmeside</th>
+                            <th>Municipality Number</th>
+                            <th>Naeringskode1</th>
+                            <th>Antall Ansatte</th>
+                            <th>Postnummer</th>
+                            <th>Poststed</th>
+                            <th>Additional Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="companies"> <!-- Her vil selskapsinformasjon bli lagt til -->
+
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <footer> <!-- Siden footer -->
+        <p>&copy; 2023 Stian's nettside</p> <!-- Copyright merknad -->
+    </footer>
+</body>
+
+<script>
+    // Når dokumentet er klart, kjøres denne funksjonen.
+    window.addEventListener('DOMContentLoaded',async function () {
+        try {
+            // Sender en forespørsel til serveren for å hente selskapsinformasjon.
+            const result = await fetch('http://localhost:3000/getCompanies');
+            // Tolker svaret som JSON.
+            const data = await result.json()
+            console.log(data) // Logger dataene til konsollen.
+            const companies = data.companies; // Henter listen over selskaper.
+            console.log(companies) // Logger selskapsinformasjonen til konsollen.
+
+            // For hver bedrift i listen...
+            companies.forEach((company) => {
+                // Henter selskapsinformasjonen.
+                let companyInfo = company.companyInfo;
+
+                // Legger til en ny rad i tabellen med selskapsinformasjon.
+                document.getElementById('companies').innerHTML +=
+                    `<tr>
+                            <td>${companyInfo.organisasjonsnummer}</td>
+                            <td>${companyInfo.navn}</td>
+                            <td>${companyInfo.organisasjonsform}</td>
+                            <td>${companyInfo.adresse}</td>
+                            <td>${companyInfo.additionalData.industryCode}</td>
+                            <td>${companyInfo.additionalData.sectorCode}</td>
+                            <td>${companyInfo.additionalData.orgType}</td>
+                            <td>${companyInfo.additionalData.orgPath}</td>
+                            <td>${companyInfo.additionalData.orgStatus}</td>
+                            <td>${companyInfo.additionalData.issued}</td>
+                            <td><a href="http://${companyInfo.additionalData.hjemmeside}"
+                                    target="_blank">${companyInfo.additionalData.hjemmeside}</a></td>
+                            <td>${companyInfo.additionalData.municipalityNumber}</td>
+                            <td>${companyInfo.additionalData.naeringskode1}</td>
+                            <td>${companyInfo.additionalData.antallAnsatte}</td>
+                            <td>${companyInfo.additionalData.postnummer}</td>
+                            <td>${companyInfo.additionalData.poststed}</td>
+                            <td>${company.additionalData.note}</td>
+                        </tr>`
+            })
+        } catch (error) { // Hvis det oppstår en feil under henting av selskapsinformasjon, logges feilen til konsollen.
+            console.log("Fetch error: ",error);
+        }
+    })
+</script>
+
+</html>

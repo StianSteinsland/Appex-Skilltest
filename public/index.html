@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8"> <!-- Setter tegnsettet til UTF-8 for siden -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Gjør siden responsiv -->
+  <title>Company App</title> <!-- Setter tittelen på siden -->
+  <link rel="stylesheet" type="text/css" href="styles.css"> <!-- Linker til en ekstern CSS-fil -->
+</head>
+
+<body>
+  <header>
+    <h1>Stian's bedrift nettside</h1> <!-- Header med en overskrift -->
+  </header>
+  <div class="main-container">
+    <main>
+      <div id="input-form-container">
+        <form id="company-form" action="/company" method="post"> <!-- Starter en form -->
+          <input type="text" id="orgnr" placeholder="Enter org nr" required> <!-- Tekst input for organisasjonsnummer -->
+          <div id="button-container">
+            <button id="submit" type="button">Submit</button> <!-- Sender form når knappen er trykket -->
+          </div>
+        </form>
+      </div>
+      <div id="company-info">
+        <!-- Bedriftsinformasjon vil bli vist her -->
+      </div>
+    </main>
+  </div>
+  <footer>
+    <p>&copy; 2023 Stian's nettside</p> <!-- Copyright merknad -->
+  </footer>
+  <script src="app.js"></script> <!-- Linker til en ekstern JavaScript-fil -->
+</body>
+
+</html>
