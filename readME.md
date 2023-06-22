@@ -1,4 +1,4 @@
-# Appex1
+# Appex-Skilltest
 # Company App
 
 Dette er en webapplikasjon som lar deg lagre og vise informasjon om bedrifter basert på oppslag i Brønnøysundregisteret og andre APIer.
